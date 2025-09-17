@@ -71,7 +71,7 @@ const data2 = {
 
 const Main = () => {
   return (
-    <div className="flex gap-6 w-full justify-around items-center">
+    <div className="flex flex-col md:flex-row gap-6 w-full justify-around h-[80vh]">
       <div style={{ width: "400px", height: "250px" }}>
         <Line data={data} options={options} />
       </div>
