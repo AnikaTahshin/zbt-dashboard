@@ -7,9 +7,12 @@ import Link from "next/link";
 import { FaUserCircle } from "react-icons/fa";
 import { MdSettings } from "react-icons/md";
 import { MdLogout } from "react-icons/md";
+// import { auth } from "@/auth";
+const Navbar = async({ setIsOpen }: any) => {
 
-const Navbar = ({ setIsOpen }: any) => {
-  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  // const session = await auth();
+  //   const user = session?.user
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState<boolean>(false);
 
   const toggleUserMenu = () => {
     setIsUserMenuOpen(!isUserMenuOpen);
@@ -41,10 +44,15 @@ const Navbar = ({ setIsOpen }: any) => {
 
         
 
+  <p className="text-neutral-500 font-sora tracking-wide">
+        Welcome 
+        {/* {user?.name} */}
+      </p>
         <div
           className="user cursor-pointer rounded-[50%] w-[50px] h-[50px] flex justify-center items-center relative"
           onClick={toggleUserMenu}
         >
+          
           <Image
             src="/assets/user.jpg"
             alt="user-image"
@@ -88,6 +96,7 @@ const Navbar = ({ setIsOpen }: any) => {
             </ul>
           )}
         </div>
+
       </div>
     </>
   );

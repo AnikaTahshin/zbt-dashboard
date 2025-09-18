@@ -1,5 +1,5 @@
 "use client";
-import useFetch from "@/api/useFetch";
+import useFetch from "@/hooks/useFetch";
 import Loader from "@/components/Loader";
 import PostCard from "@/components/PostCard";
 import React, { useEffect, useState } from "react";

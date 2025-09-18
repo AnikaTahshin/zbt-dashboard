@@ -4,7 +4,8 @@ import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
 import React, { useState } from "react";
 
-const Dashboard = () => {
+const Dashboard = async () => {
+  
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>

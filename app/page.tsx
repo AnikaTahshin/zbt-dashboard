@@ -1,10 +1,17 @@
-import Image from "next/image";
+"use client"
 import Dashboard from "./dashboard/page";
+import LoginForm from "@/components/LoginForm";
+import { auth } from "@/auth";
+export default async function Home() {
+  const session = await auth();
+  const user = session?.user
+    
 
-export default function Home() {
+    
   return (
     <>
-    <Dashboard />
+    
+    {user ? <Dashboard /> : <LoginForm />}
     </>
   );
 }

@@ -21,9 +21,7 @@ const Sidebar = ({ isOpen, setIsOpen }: any) => {
       </div>
 
       <span className="h-[15px] bg-[#dfe0e4] w-full block my-2"></span>
-      <p className="text-neutral-500 font-sora tracking-wide py-3">
-        Welcome Anika,
-      </p>
+      
       <ul className="flex flex-col gap-3 sidebar-nav relative z-20 overflow-y-scroll">
         <li className="py-4 px-4 rounded-xl transition-colors duration-300 font-sora bg-[var(--prim-color)]">
           <Link
