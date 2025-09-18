@@ -1,26 +1,31 @@
-type OptionsTypes = {
-  method: string;
-  headers: {
-    'Content-Type': string;
-  };
+import { useState, useEffect } from "react";
+export interface Post {
+  id: number;
+  title: string;
   body: string;
-};
+  
+}
 
-export default async function useFetch({ url }: { url: string }) {
-  const res = await fetch(url, {
+const useFetch = (url: string) => {
+  const [posts, setData] = useState<Post>();
+  const [error, setError] = useState<string>();
+  const [loading, setLoading] = useState<boolean>(true);
+  const options = {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
-    cache: "no-store", 
-  });
+  };
 
-  if (!res.ok) {
-    const errorData = await res.json();
-    throw new Error(
-      `Failed to fetch data: ${res.status} - ${JSON.stringify(errorData.errors)}`
-    );
-  }
+  useEffect(() => {
+    fetch(url, options)
+      .then((res) => res.json())
+      .then((posts) => {setLoading(false);setData(posts)})
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
+  }, [url]);
 
-  return res.json();
-}
+  return { posts, error, loading };
+};
+
+export default useFetch;

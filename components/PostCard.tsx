@@ -1,27 +1,36 @@
+"use client";
+import { Post } from "@/types/type";
+import Link from "next/link";
 import React from "react";
+import { useRouter } from "next/navigation";
 
-const PostCard = ({ posts }: { posts: any[] }) => {
+const PostCard = ({ posts }: { posts: Post[] }) => {
+  const router = useRouter();
+   const handlePostDetails = async (id: number) => {
+    router.push(`/posts/${id}`);
+  };
   return (
-    <div className="grid gap-4 grid-cols-5">
-      {posts.map((post) => (
-        <div className="max-w-sm rounded overflow-hidden shadow-lg">
-  
-  <div className="px-6 py-4">
-    <div className="font-bold text-xl mb-2">{post.title}</div>
-    <p className="text-gray-700 text-base">
-      {post.body}</p>
-  </div>
-  <div className="px-6 pt-4 pb-2">
-    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-  Read more
-</button>
-  </div>
-</div>
+    <>
+      <div className="p-4">
+        <h1 className="text-4xl text-center my-5">All Posts</h1>
 
-        
-      ))}
-      
-    </div>
+        <div className="grid gap-4 grid-cols-1 md:grid-cols-4">
+          {posts.map((post) => (
+            <div key={post?.id} className="max-w-sm rounded overflow-hidden shadow-lg relative">
+              <div className="px-6 py-4">
+                <div className="font-bold text-xl mb-2">{post?.title}</div>
+                <p className="text-gray-700 text-base">{post?.body.slice(0,30)}...</p>
+              </div>
+              {post?.body?.length > 40 && <div className="px-6 pt-4 pb-2 absolute bottom-0 right-0">
+                <button onClick={() => handlePostDetails(post?.id)} className="bg-blue-500 hover:bg-[#066dca] text-white font-bold py-1 px-2 rounded-[10px]">
+                  More
+                </button>
+              </div>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
   );
 };
 
