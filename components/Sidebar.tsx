@@ -5,7 +5,14 @@ import { FiHome } from "react-icons/fi";
 import { FiUsers } from "react-icons/fi";
 import { MdOutlineSignpost } from "react-icons/md";
 
-const Sidebar = ({ isOpen, setIsOpen }: any) => {
+import { logout } from "@/app/actions";
+const Sidebar =  ({ isOpen, setIsOpen }: any) => {
+
+  const handleLogOut = async () => { 
+    console.log("logout clicked");
+    await logout();
+   }
+   
   return (
     <div
       className={`h-100vh w-[320px] min-h-[100vh] pb-0 p-5 sidebar bg-white shadow-xl fixed lg:relative transition-transform duration-300 z-50 ${
@@ -59,7 +66,7 @@ const Sidebar = ({ isOpen, setIsOpen }: any) => {
 
       <ul className="flex sidebar-nav flex-col jusctify-end items-start gap-3 absolute bottom-0 left-0 right-0 w-full p-5 pb-2">
         <li className="w-full py-4 px-4 rounded-xl text-neutral-500 font-sora transition-colors duration-300">
-            <Link href='/logout' className="text-md">Logout</Link>
+            <button onClick={handleLogOut} className="text-md cursor-pointer">Logout</button>
         </li>
       </ul>
     </div>

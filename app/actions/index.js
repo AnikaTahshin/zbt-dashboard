@@ -1,11 +1,11 @@
-'use server'
-import {signIn} from '@/auth'
+"use server";
+import { signIn, signOut } from "@/auth";
+
 export async function socialLogin(formData) {
-  const action = formData.get('action');
-  await signIn(action, {redirectTo: '/'})
-  console.log(action)
+  const action = formData.get("action");
+  await signIn(action, { redirectTo: "/" });
 }
 
-export async function logout(formData) {
-  
+export async function logout() {
+  await signOut({ redirectTo: "/login" });
 }

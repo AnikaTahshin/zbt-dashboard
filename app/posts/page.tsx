@@ -2,7 +2,7 @@
 import useFetch from "@/hooks/useFetch";
 import Loader from "@/components/Loader";
 import PostCard from "@/components/PostCard";
-import React, { useEffect, useState } from "react";
+
 
 const Posts = () => {
   const url: string = "https://jsonplaceholder.typicode.com/posts";

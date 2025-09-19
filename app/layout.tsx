@@ -7,6 +7,7 @@ import {
   Chakra_Petch,
 } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from "@/components/AuthProvider";
 
 const chakraPetch = Chakra_Petch({
   variable: "--font-chakrapetch",
@@ -52,7 +53,7 @@ export default function RootLayout({
       <body
         className={`${chakraPetch.variable} ${inter.variable} ${poppins.variable} ${sora.variable} ${unbounded.variable} antialiased`}
       >
-        {children}
+       <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );

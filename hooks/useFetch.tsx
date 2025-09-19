@@ -23,7 +23,7 @@ const useFetch = (url: string) => {
       .then((posts) => {setLoading(false);setData(posts)})
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
-  }, [url]);
+  }, []);
 
   return { posts, error, loading };
 };

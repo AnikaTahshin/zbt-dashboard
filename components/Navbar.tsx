@@ -7,18 +7,16 @@ import Link from "next/link";
 import { FaUserCircle } from "react-icons/fa";
 import { MdSettings } from "react-icons/md";
 import { MdLogout } from "react-icons/md";
-// import { auth } from "@/auth";
-const Navbar = async({ setIsOpen }: any) => {
-
-  // const session = await auth();
-  //   const user = session?.user
-  const [isUserMenuOpen, setIsUserMenuOpen] = useState<boolean>(false);
-
+import { useSession } from "next-auth/react";
+import { logout } from "@/app/actions";
+const Navbar = ({ setIsOpen }: any) => {
+  
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+const { data: session } = useSession();
   const toggleUserMenu = () => {
     setIsUserMenuOpen(!isUserMenuOpen);
-    
   };
- 
+
   return (
     <>
       <div className="bg-white h-[90px] shadow-lg flex justify-between items-center gap-3 px-[2%]">
@@ -41,20 +39,18 @@ const Navbar = async({ setIsOpen }: any) => {
         >
           <HiBars3BottomRight />
         </div>
+        {session?.user?.name && (
+            <p className="text-gray-700 font-medium">
+              Welcome, {session.user.name}
+            </p>
+          )}
 
-        
-
-  <p className="text-neutral-500 font-sora tracking-wide">
-        Welcome 
-        {/* {user?.name} */}
-      </p>
         <div
           className="user cursor-pointer rounded-[50%] w-[50px] h-[50px] flex justify-center items-center relative"
           onClick={toggleUserMenu}
         >
-          
           <Image
-            src="/assets/user.jpg"
+             src={session?.user?.image || "/assets/user.jpg"}
             alt="user-image"
             className="w-full h-full relative"
             width={50}
@@ -78,25 +74,22 @@ const Navbar = async({ setIsOpen }: any) => {
                   className="text-md hover:text-[#006dca] transition-colors duration-300 flex items-center gap-2"
                 >
                   <MdSettings />
-
                   Setttings
                 </Link>
               </li>
 
               <li>
-                <Link
-                  href="/logout"
+                <button
+                  onClick={logout}
                   className="text-md hover:text-[#006dca] transition-colors duration-300 flex items-center gap-2"
                 >
                   <MdLogout />
-
                   Logout
-                </Link>
+                </button>
               </li>
             </ul>
           )}
         </div>
-
       </div>
     </>
   );

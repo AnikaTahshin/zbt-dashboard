@@ -1,12 +1,19 @@
-import LoginForm from '@/components/LoginForm'
-import React from 'react'
+import { auth } from "@/auth";
+import LoginForm from "@/components/LoginForm";
+import { redirect } from "next/navigation";
+import React from "react";
 
-const Login = () => {
+const Login = async () => {
+  const session = await auth();
+
+  if (session) {
+    redirect("/");
+  }
   return (
-    <div>
-        <LoginForm />
+    <div className="min-h-screen flex items-center justify-center">
+      <LoginForm />
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
