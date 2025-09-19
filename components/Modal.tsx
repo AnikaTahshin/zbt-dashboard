@@ -25,7 +25,7 @@ function Modal({ isOpen, setIsOpen, data }: ModalProps) {
         className="fixed inset-0 z-50"
       >
         <div
-          className="absolute inset-0 bg-black/50"
+          className="absolute inset-0 bg-black/90"
           onClick={() => setIsOpen(false)}
         />
 
@@ -39,19 +39,19 @@ function Modal({ isOpen, setIsOpen, data }: ModalProps) {
           >
              <RxCross2 className="absolute top-0 right-0 m-2 cursor-pointer" onClick={() => setIsOpen(false)} />
             <div className="space-y-4">
-              <h2 className="text-xl font-semibold">{data?.name}</h2>
-              <p className="text-gray-600">Email: {data?.email}</p>
-              <p className="text-gray-600">Contact: {data?.phone}</p>
-              <p className="text-gray-600">Website: {data?.website}</p>
+              <h2 className="text-xl text-black">{data?.name}</h2>
+              <p className="text-black">Email: {data?.email}</p>
+              <p className="text-black">Contact: {data?.phone}</p>
+              <p className="text-black">Website: {data?.website}</p>
               {data?.address && (
-                <p className="text-gray-600">
+                <p className="text-black">
                   Address: {data?.address?.street}, {data?.address?.city},{" "}
                   {data?.address?.zipcode}
                 </p>
               )}
 
               {data?.company?.name && (
-                <p className="text-gray-600">Company: {data?.company?.name}</p>
+                <p className="text-black">Company: {data?.company?.name}</p>
               )}
               
             </div>
