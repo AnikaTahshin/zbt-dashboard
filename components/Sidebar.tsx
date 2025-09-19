@@ -9,7 +9,7 @@ import { logout } from "@/app/actions";
 const Sidebar =  ({ isOpen, setIsOpen }: any) => {
 
   const handleLogOut = async () => { 
-    console.log("logout clicked");
+    
     await logout();
    }
    

@@ -7,7 +7,7 @@ import PostCard from "@/components/PostCard";
 const Posts = () => {
   const url: string = "https://jsonplaceholder.typicode.com/posts";
   const { posts, error, loading } = useFetch(url );
-  console.log("say hello to data", posts);
+  
 
   return (
     <div>

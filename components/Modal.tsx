@@ -1,6 +1,8 @@
+'use client';
 import { motion } from "framer-motion";
 import { User } from "@/types/type";
 import { RxCross2 } from "react-icons/rx";
+import { useEffect } from "react";
 
 interface ModalProps {
   isOpen: boolean;
@@ -9,11 +11,14 @@ interface ModalProps {
 }
 function Modal({ isOpen, setIsOpen, data }: ModalProps) {
 
+   useEffect(() => {
+     
+   }, [data?.id])
    
     
   return (
     <>
-      <motion.div
+      {data && <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -35,18 +40,18 @@ function Modal({ isOpen, setIsOpen, data }: ModalProps) {
              <RxCross2 className="absolute top-0 right-0 m-2 cursor-pointer" onClick={() => setIsOpen(false)} />
             <div className="space-y-4">
               <h2 className="text-xl font-semibold">{data?.name}</h2>
-              <p className="text-gray-600">{data?.email}</p>
-              <p className="text-gray-600">{data?.phone}</p>
-              <p className="text-gray-600">{data?.website}</p>
+              <p className="text-gray-600">Email: {data?.email}</p>
+              <p className="text-gray-600">Contact: {data?.phone}</p>
+              <p className="text-gray-600">Website: {data?.website}</p>
               {data?.address && (
                 <p className="text-gray-600">
-                  Address: {data?.address?.street}, {data.address.city},{" "}
-                  {data.address.zipcode}
+                  Address: {data?.address?.street}, {data?.address?.city},{" "}
+                  {data?.address?.zipcode}
                 </p>
               )}
 
               {data?.company?.name && (
-                <p className="text-gray-600">Company: {data.company.name}</p>
+                <p className="text-gray-600">Company: {data?.company?.name}</p>
               )}
               
             </div>
@@ -57,7 +62,7 @@ function Modal({ isOpen, setIsOpen, data }: ModalProps) {
 
 
         </div>
-      </motion.div>
+      </motion.div>}
     </>
   );
 }

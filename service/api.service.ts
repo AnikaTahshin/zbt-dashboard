@@ -1,6 +1,8 @@
-export async function getPostDetails(id: number) {
+export async function getPostDetails(id: string) {
+
+  const postId = parseInt(id);
   
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
     

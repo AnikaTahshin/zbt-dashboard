@@ -41,24 +41,24 @@ const { data: session } = useSession();
         </div>
         {session?.user?.name && (
             <p className="text-gray-700 font-medium">
-              Welcome, {session.user.name}
+              Welcome, {session?.user?.name}
             </p>
           )}
 
         <div
-          className="user cursor-pointer rounded-[50%] w-[50px] h-[50px] flex justify-center items-center relative"
+          className=" cursor-pointer rounded-[50%] w-[50px] h-[50px] flex justify-center items-center relative"
           onClick={toggleUserMenu}
         >
           <Image
-             src={session?.user?.image || "/assets/user.jpg"}
+            src={session?.user?.image || '/assets/user.jpg'}
             alt="user-image"
-            className="w-full h-full relative"
+            className="w-full h-full relative rounded-full"
             width={50}
             height={50}
           />
           {isUserMenuOpen && (
             <ul className="absolute top-15 right-0 bg-white w-[200px] p-3 flex flex-col gap-3 rounded-2xl shadow-xl animate-fade-in">
-              <li>
+              
                 <Link
                   href="/profile"
                   className="text-md hover:text-[#006dca] transition-colors duration-300 flex items-center gap-2"
@@ -66,9 +66,7 @@ const { data: session } = useSession();
                   <FaUserCircle />
                   My Profile
                 </Link>
-              </li>
-
-              <li>
+              
                 <Link
                   href="/setttings"
                   className="text-md hover:text-[#006dca] transition-colors duration-300 flex items-center gap-2"
@@ -76,9 +74,7 @@ const { data: session } = useSession();
                   <MdSettings />
                   Setttings
                 </Link>
-              </li>
-
-              <li>
+              
                 <button
                   onClick={logout}
                   className="text-md hover:text-[#006dca] transition-colors duration-300 flex items-center gap-2"
@@ -86,7 +82,7 @@ const { data: session } = useSession();
                   <MdLogout />
                   Logout
                 </button>
-              </li>
+              
             </ul>
           )}
         </div>
