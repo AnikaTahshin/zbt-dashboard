@@ -1,10 +1,17 @@
 import React from "react";
 import { auth } from "@/auth";
 import Image from "next/image";
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Profile - ZBT Dashboard",
+  description: "User profile page",
+};
 
 const Profile = async () => {
   const session = await auth();
   const user = session?.user;
+
+  
   return (
     <div className="flex justify-center items-center h-[100vh]">
       <div className="relative flex items-center justify-center flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">

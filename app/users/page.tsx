@@ -47,6 +47,10 @@ const Users = () => {
     }
   };
 
+    useEffect(() => {
+    document.title = "Users - ZBT Users";
+  }, []);
+
   useEffect(() => {
     fetchUserData();
   }, [userId]);
