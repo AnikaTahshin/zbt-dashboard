@@ -34,6 +34,7 @@ const Users = () => {
   const handleUserDetails = async (id: number) => {
     setIsOpen(true);
     setUserId(id);
+    setUserDetails(undefined); // Clear previous user details
     try {
       const response = await getUserDetails(id);
       if (response) {
@@ -52,7 +53,7 @@ const Users = () => {
 
   return (
     <div className={`relative ${isOpen ? "opacity-50" : "opacity-100"}`}>
-      {isOpen && userDetails && (
+      {isOpen && (
         <Modal data={userDetails} isOpen={isOpen} setIsOpen={setIsOpen} />
       )}
       {error && (

@@ -1,8 +1,8 @@
 import { Suspense } from "react";
-import { auth } from "@/auth";
 import Dashboard from "./dashboard/page";
 
 export default async function Home() {
+   
   return (
     <Suspense
       fallback={

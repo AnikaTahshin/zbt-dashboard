@@ -7,7 +7,7 @@ import { useEffect } from "react";
 interface ModalProps {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
-  data: User;
+  data: User | undefined;
 }
 function Modal({ isOpen, setIsOpen, data }: ModalProps) {
 
@@ -18,7 +18,7 @@ function Modal({ isOpen, setIsOpen, data }: ModalProps) {
     
   return (
     <>
-      {data && <motion.div
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -39,21 +39,28 @@ function Modal({ isOpen, setIsOpen, data }: ModalProps) {
           >
              <RxCross2 className="absolute top-0 right-0 m-2 cursor-pointer" onClick={() => setIsOpen(false)} />
             <div className="space-y-4">
-              <h2 className="text-xl text-black">{data?.name}</h2>
-              <p className="text-black">Email: {data?.email}</p>
-              <p className="text-black">Contact: {data?.phone}</p>
-              <p className="text-black">Website: {data?.website}</p>
-              {data?.address && (
-                <p className="text-black">
-                  Address: {data?.address?.street}, {data?.address?.city},{" "}
-                  {data?.address?.zipcode}
-                </p>
+              {data ? (
+                <>
+                  <h2 className="text-xl text-black">{data.name}</h2>
+                  <p className="text-black">Email: {data.email}</p>
+                  <p className="text-black">Contact: {data.phone}</p>
+                  <p className="text-black">Website: {data.website}</p>
+                  {data.address && (
+                    <p className="text-black">
+                      Address: {data.address.street}, {data.address.city},{" "}
+                      {data.address.zipcode}
+                    </p>
+                  )}
+                  {data.company?.name && (
+                    <p className="text-black">Company: {data.company.name}</p>
+                  )}
+                </>
+              ) : (
+                <div className="flex flex-col items-center justify-center py-12">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mb-4"></div>
+                  <p className="text-gray-600 text-lg">Loading user details...</p>
+                </div>
               )}
-
-              {data?.company?.name && (
-                <p className="text-black">Company: {data?.company?.name}</p>
-              )}
-              
             </div>
 
            
@@ -62,7 +69,7 @@ function Modal({ isOpen, setIsOpen, data }: ModalProps) {
 
 
         </div>
-      </motion.div>}
+      </motion.div>
     </>
   );
 }
