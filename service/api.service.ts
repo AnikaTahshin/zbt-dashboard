@@ -15,7 +15,6 @@ export async function getPostDetails(id: string) {
   }
 
   const data = await res.json();
-  console.log("details data",data)
   return data;
 }
 
@@ -35,7 +34,6 @@ export async function getUserData() {
   }
 
   const data = await res.json();
-  console.log("user data",data)
   return data;
 }
 
@@ -55,6 +53,5 @@ export async function getUserDetails(id: number) {
   }
 
   const data = await res.json();
-  console.log("user data",data)
   return data;
 }

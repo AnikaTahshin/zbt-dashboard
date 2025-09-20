@@ -47,22 +47,41 @@ const Users = () => {
     }
   };
 
-    useEffect(() => {
+  useEffect(() => {
     document.title = "Users - ZBT Users";
   }, []);
 
   useEffect(() => {
     fetchUserData();
   }, [userId]);
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-[100vh]">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">404</h1>
+          <h2 className="text-2xl font-semibold text-gray-700 mb-2">
+            Post Not Found
+          </h2>
+          <p className="text-gray-500 mb-6">
+            The post you're looking for doesn't exist.
+          </p>
+          <a
+            href="/posts"
+            className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            Back to Posts
+          </a>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={`relative ${isOpen ? "opacity-50" : "opacity-100"}`}>
       {isOpen && (
         <Modal data={userDetails} isOpen={isOpen} setIsOpen={setIsOpen} />
       )}
-      {error && (
-        <p className="text-red-500 text-center">Something went wrong...</p>
-      )}
+
       {loading && <Loader />}
 
       <div className="flex flex-col items-center justify-center p-6 w-full">
