@@ -8,9 +8,12 @@ interface PostDetailsProps {
   id: string;
 }
 
-const PostDetails = ({ id }: PostDetailsProps) => {
+const PostDetails =  ({ id }: PostDetailsProps) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<Post>();
+
+
+  console.log("params type",typeof id)
 
   const fetchDetails = async () => {
     try {

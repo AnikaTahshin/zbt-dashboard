@@ -1,6 +1,11 @@
 import PostDetails from "@/components/PostDetails";
 
-
-export default function Page({ params }: { params: { id: string } }) {
-  return <PostDetails id={params.id} />;
+// Make your Page component async because you'll `await` params
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  return <PostDetails id={id} />;
 }
