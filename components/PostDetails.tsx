@@ -63,9 +63,15 @@ const PostDetails =  ({ id }: PostDetailsProps) => {
     <div className="flex justify-center items-center h-[100vh]">
       <div className="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-96">
         <div className="mx-3 mb-0 border-b border-slate-200 pt-3 pb-2 px-1">
+          
+          <p className="text-sm text-slate-600 font-medium">
+            Id: {data?.id}
+          </p>
           <span className="text-sm text-slate-600 font-medium">
             User Id: {data?.userId}
           </span>
+
+
         </div>
         <div className="p-4">
           <h5 className="mb-2 text-slate-800 text-xl font-semibold">
