@@ -1,18 +1,31 @@
 "use client";
 import Link from "next/link";
 import React from "react";
-import { FiHome } from "react-icons/fi";
-import { FiUsers } from "react-icons/fi";
+import { FiHome, FiUsers } from "react-icons/fi";
 import { MdOutlineSignpost } from "react-icons/md";
-
+import { usePathname } from "next/navigation";
 import { logout } from "@/app/actions";
-const Sidebar =  ({ isOpen, setIsOpen }: any) => {
 
-  const handleLogOut = async () => { 
-    
+const Sidebar = ({ isOpen, setIsOpen }: any) => {
+  const pathname = usePathname();
+
+  const handleLogOut = async () => {
     await logout();
-   }
-   
+  };
+
+  const links = [
+    { href: "/", label: "Dashboard", icon: <FiHome /> },
+    { href: "/posts", label: "Posts", icon: <MdOutlineSignpost /> },
+    { href: "/users", label: "Users", icon: <FiUsers /> },
+  ];
+
+  const isLinkActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/"; // ✅ Dashboard only on root
+    }
+    return pathname.startsWith(href); // ✅ Works for nested routes too
+  };
+
   return (
     <div
       className={`h-100vh w-[320px] min-h-[100vh] pb-0 p-5 sidebar bg-white shadow-xl fixed lg:relative transition-transform duration-300 z-50 ${
@@ -28,45 +41,52 @@ const Sidebar =  ({ isOpen, setIsOpen }: any) => {
       </div>
 
       <span className="h-[15px] bg-[#dfe0e4] w-full block my-2"></span>
-      
+
       <ul className="flex flex-col gap-3 sidebar-nav relative z-20 overflow-y-scroll">
-        <li className="py-4 px-4 rounded-xl transition-colors duration-300 font-sora bg-[var(--prim-color)]">
-          <Link
-            href="/"
-            className="text-md transition-colors duration-300 flex flex-row items-center gap-3"
-          >
-            
-            <FiHome className="text-white" />
-            <p className="text-white">Dashboard</p>
-          </Link>
-        </li>
+        {links.map(({ href, label, icon }) => {
+          const active = isLinkActive(href);
 
-        {/* Posts */}
-        <li className="py-4 px-4 rounded-xl transition-colors duration-300 font-sora hover:bg-[var(--prim-color)]">
-          <Link
-            href="/posts"
-            className="text-md transition-colors duration-300 flex flex-row items-center gap-3 group"
-          >
-            <MdOutlineSignpost className="text-[#066dca] group-hover:text-white" />
-            <p className="text-neutral-500 group-hover:text-white">Posts</p>
-          </Link>
-        </li>
-
-        {/* Users */}
-        <li className="py-4 px-4 rounded-xl transition-colors duration-300 font-sora hover:bg-[var(--prim-color)]">
-          <Link
-            href="/users"
-            className="text-md transition-colors duration-300 flex flex-row items-center gap-3 group"
-          >
-            <FiUsers className="text-[#066dca] group-hover:text-white" />
-            <p className="text-neutral-500 group-hover:text-white">Users</p>
-          </Link>
-        </li>
+          return (
+            <li
+              key={href}
+              className={`py-4 px-4 rounded-xl transition-colors duration-300 font-sora ${
+                active
+                  ? "bg-[var(--prim-color)] text-white"
+                  : "hover:bg-[var(--prim-color)]"
+              }`}
+            >
+              <Link
+                href={href}
+                className="text-md transition-colors duration-300 flex flex-row items-center gap-3 group"
+              >
+                <span
+                  className={`${
+                    active ? "text-white" : "text-[#066dca] group-hover:text-white"
+                  }`}
+                >
+                  {icon}
+                </span>
+                <p
+                  className={`${
+                    active ? "text-white" : "text-neutral-500 group-hover:text-white"
+                  }`}
+                >
+                  {label}
+                </p>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
 
-      <ul className="flex sidebar-nav flex-col jusctify-end items-start gap-3 absolute bottom-0 left-0 right-0 w-full p-5 pb-2">
+      <ul className="flex sidebar-nav flex-col justify-end items-start gap-3 absolute bottom-0 left-0 right-0 w-full p-5 pb-2">
         <li className="w-full py-4 px-4 rounded-xl text-neutral-500 font-sora transition-colors duration-300">
-            <button onClick={handleLogOut} className="text-md cursor-pointer">Logout</button>
+          <button
+            onClick={handleLogOut}
+            className="text-md cursor-pointer hover:text-red-500"
+          >
+            Logout
+          </button>
         </li>
       </ul>
     </div>

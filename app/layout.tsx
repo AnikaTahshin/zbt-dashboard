@@ -9,17 +9,9 @@ import {
 import "./globals.css";
 import { AuthProvider } from "@/components/AuthProvider";
 
-const chakraPetch = Chakra_Petch({
-  variable: "--font-chakrapetch",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-});
+
+
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -27,11 +19,6 @@ const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
-const sora = Sora({
-  variable: "--font-sora",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-});
 
 const unbounded = Unbounded({
   variable: "--font-unbounded",
@@ -51,9 +38,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${chakraPetch.variable} ${inter.variable} ${poppins.variable} ${sora.variable} ${unbounded.variable} antialiased`}
+        className={` ${poppins.variable}  ${unbounded.variable} antialiased`}
       >
-       <AuthProvider>{children}</AuthProvider>
+       <AuthProvider>
+        {children}
+        </AuthProvider>
       </body>
     </html>
   );
