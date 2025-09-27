@@ -26,8 +26,8 @@ const unbounded = Unbounded({
   weight: ["300", "400", "500", "600", "700"],
 });
 export const metadata: Metadata = {
-  title: "ZettaByte",
-  description: "ZettaByte Dashboard",
+  title: "LearnHub",
+  description: "LearnHub Dashboard",
 };
 
 export default function RootLayout({

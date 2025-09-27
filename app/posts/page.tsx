@@ -9,7 +9,7 @@ const Posts = () => {
   const { posts, error, loading } = useFetch(url);
 
   useEffect(() => {
-    document.title = "Posts - ZBT Dashboard";
+    document.title = "Posts - LearnHub Dashboard";
   }, []);
 
   return (

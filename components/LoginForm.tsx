@@ -9,7 +9,7 @@ const LoginForm = () => {
         <form action={socialLogin} className="space-y-6">
           <div className="flex relative flex-col items-center justify-center min-h-[450px] bg-gray-100 dark:bg-gray-700">
             <h1 className="text-3xl font-semibold font-unbounded absolute top-5">
-              Zetta<span className="text-[#066dca] font-unbounded">byte</span>
+              Learn<span className="text-[#066dca] font-unbounded">Hub</span>
             </h1>
             <h1 className="text-xl md:text-2xl font-semibold font-unbounded pb-8 px-4 md:px-0">
               Sign in to your account

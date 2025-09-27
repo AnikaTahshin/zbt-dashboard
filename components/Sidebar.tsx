@@ -35,7 +35,7 @@ const Sidebar = ({ isOpen, setIsOpen }: any) => {
       <div className="nav-logo text-center py-2">
         <Link href="/" className="cursor-pointer">
           <h1 className="text-3xl font-semibold font-unbounded">
-            Zetta<span className="text-[#066dca] font-unbounded">byte</span>
+            Learn<span className="text-[#066dca] font-unbounded">Hub</span>
           </h1>
         </Link>
       </div>

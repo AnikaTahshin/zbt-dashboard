@@ -48,7 +48,7 @@ const Users = () => {
   };
 
   useEffect(() => {
-    document.title = "Users - ZBT Users";
+    document.title = "Users - LearnHub Users";
   }, []);
 
   useEffect(() => {

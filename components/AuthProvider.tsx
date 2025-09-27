@@ -9,7 +9,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    document.title = "ZBT Dashboard";
+    document.title = "LearnHub Dashboard";
   }, []);
 
   return (

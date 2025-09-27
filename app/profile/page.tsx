@@ -3,7 +3,7 @@ import { auth } from "@/auth";
 import Image from "next/image";
 import { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Profile - ZBT Dashboard",
+  title: "Profile - LearnHub Dashboard",
   description: "User profile page",
 };
 
