@@ -9,6 +9,8 @@ import { logout } from "@/app/actions";
 const Sidebar = ({ isOpen, setIsOpen }: any) => {
   const pathname = usePathname();
 
+
+  console.log("sidebar isopen",isOpen)
   const handleLogOut = async () => {
     await logout();
   };
@@ -28,7 +30,7 @@ const Sidebar = ({ isOpen, setIsOpen }: any) => {
 
   return (
     <div
-      className={`h-100vh w-[320px] min-h-[100vh] pb-0 p-5 sidebar bg-white shadow-xl fixed lg:relative transition-transform duration-300 z-50 ${
+      className={`h-100vh w-[320px] min-h-[100vh] pb-0 p-5 sidebar ${isOpen ? "bg-white" : ""} shadow-xl fixed lg:relative transition-transform duration-300 z-50 ${
         isOpen ? "translate-x-0" : "-translate-x-full"
       } lg:translate-x-0`}
     >
@@ -40,9 +42,9 @@ const Sidebar = ({ isOpen, setIsOpen }: any) => {
         </Link>
       </div>
 
-      <span className="h-[15px] bg-[#dfe0e4] w-full block my-2"></span>
+      <span className={`h-[15px] ${isOpen ? "bg-[#dfe0e4]" : ""} w-full block my-2`}></span>
 
-      <ul className="flex flex-col gap-3 sidebar-nav relative z-20 overflow-y-scroll">
+      <ul className="flex flex-col gap-3 sidebar-nav relative z-20 ">
         {links.map(({ href, label, icon }) => {
           const active = isLinkActive(href);
 

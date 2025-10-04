@@ -54,6 +54,9 @@ const Users = () => {
   useEffect(() => {
     fetchUserData();
   }, [userId]);
+
+
+  console.log("modal isOpen",isOpen)
   if (error) {
     return (
       <div className="flex justify-center items-center h-[100vh]">
@@ -86,7 +89,7 @@ const Users = () => {
 
       <div className="flex flex-col items-center justify-center p-6 w-full">
         <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">
-          Zetta<span className="text-[#066dca] font-unbounded">Users</span>
+          All<span className="text-[#066dca] font-unbounded">Users</span>
         </h1>
 
         <div className="relative overflow-x-auto w-full max-w-4xl mx-auto">

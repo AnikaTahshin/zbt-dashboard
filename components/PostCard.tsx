@@ -27,7 +27,7 @@ const PostCard = ({ posts }: { posts: Post[] }) => {
     <>
       <div className="px-16">
         <h1 className="text-4xl font-bold text-gray-800 my-6 text-center">
-          Zetta<span className="text-[#066dca] font-unbounded">Posts</span>
+          All<span className="text-[#066dca] font-unbounded">Posts</span>
         </h1>
 
         <div className="grid gap-4 grid-cols-1 md:grid-cols-4">

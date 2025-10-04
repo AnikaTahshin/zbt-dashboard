@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
 import {
-  Inter,
+ 
   Unbounded,
   Poppins,
-  Sora,
-  Chakra_Petch,
+ 
 } from "next/font/google";
 import "./globals.css";
-import { AuthProvider } from "@/components/AuthProvider";
-
-
-
-
+import AuthProvider from "@/components/AuthProvider";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -30,11 +25,16 @@ export const metadata: Metadata = {
   description: "LearnHub Dashboard",
 };
 
+
+
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  
   return (
     <html lang="en" suppressHydrationWarning>
       <body
